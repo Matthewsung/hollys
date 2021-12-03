@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="main-page-container">
     <div class="menu-container">
       <header class="top-menu-wrap">
         <div class="container">
@@ -142,8 +142,11 @@
         </div>
       </div>
     </div>
-    <main>
-      <router-link to="/"></router-link>
+    <main class="main-container">
+      <div class="container">
+        <!-- <router-view></router-view> -->
+        <Slide />
+      </div>
     </main>
     <footer class="footer-container">
       <div class="container">
@@ -177,8 +180,12 @@
 </template>
 
 <script>
+import Slide from '@/components/main/mainSlide.vue'
 export default {
   name: 'MainComponent',
+  components: {
+    Slide,
+  },
   data() {
     return{
       menuShow: false,
@@ -204,7 +211,7 @@ export default {
 
 <style lang="scss" scoped>
   @import '@/assets/scss/global.scss';  
-  .main-container {
+  .main-page-container {
 
     .menu-container { 
   
@@ -274,6 +281,7 @@ export default {
   
           .menu-item-box {
             display: flex;
+            position: relative;
             
             // &:hover .menu-item p {
             //   display: block;
@@ -341,6 +349,13 @@ export default {
       }
     }
   
+    .main-container {
+      
+      .container {
+        @include container();
+      }
+    }
+
     .footer-container {
       width: 100%;
       height: 145px;
