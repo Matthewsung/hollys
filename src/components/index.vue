@@ -4,54 +4,61 @@
       <div class="top-menu-wrap">
         <div class="container">
           <ul class="company-wrap">
-            <li 
-              @click="movePage('https://www.hollys.co.kr/franchise/franchise.do')"
-            >
-              <img 
-                src="@/assets/img/gnb_smenu01.png" 
-                alt="창업설명회"
-              >
+            <li>
+              <router-link to="prepare">
+                <img 
+                  src="@/assets/img/gnb_smenu01.png" 
+                  alt="창업설명회"
+                >
+              </router-link>
             </li>
-            <li
-              class="accademy" 
-            >
-              <img 
-                src="@/assets/img/gnb_smenu02_2.gif" 
-                alt="아카데미"
-              >
+            <li class="accademy">
+              <router-link to="prepare">
+                <img 
+                  src="@/assets/img/gnb_smenu02_2.gif" 
+                  alt="아카데미"
+                >
+              </router-link>
             </li>
-            <li
-              class="accademy" 
-            >
-              <img 
-                src="@/assets/img/gnb_smenu04.gif" 
-                alt="기업특판"
-              >
+            <li class="accademy">
+              <router-link to="prepare">
+                <img 
+                  src="@/assets/img/gnb_smenu04.gif" 
+                  alt="기업특판"
+                >
+              </router-link>
             </li>
           </ul>
           <div class="logo-wrap">
-            <img src="@/assets/img/logo_210302.gif" alt="할리스로고">
+            <router-link to="/">
+              <img src="@/assets/img/logo_210302.gif" alt="할리스로고">
+            </router-link>
           </div>
           <ul class="top-menu-right">
             <li>
-              <img src="@/assets/img/util_login.gif" alt="멤버십 로그인">
-              
+              <router-link to="login">
+                <img src="@/assets/img/util_login.gif" alt="멤버십 로그인">
+              </router-link>
             </li>
             <li>
-              <img src="@/assets/img/util_join.gif" alt="멤버십 가입">
-              
+              <router-link to="prepare">
+                <img src="@/assets/img/util_join.gif" alt="멤버십 가입">
+              </router-link>
             </li>
             <li>
-              <img src="@/assets/img/util_09.gif" alt="고객센터">
-              
+              <router-link to="prepare">
+                <img src="@/assets/img/util_09.gif" alt="고객센터">
+              </router-link>
             </li>
             <li class="language">
-              <img src="@/assets/img/util_05.gif" alt="English">
-              
+              <router-link to="prepare">
+                <img src="@/assets/img/util_05.gif" alt="English">
+              </router-link>
             </li>
             <li class="language">
-              <img src="@/assets/img/util_chinese.gif" alt="中文">
-              
+              <router-link to="prepare">
+                <img src="@/assets/img/util_chinese.gif" alt="中文">
+              </router-link>
             </li>
           </ul>
         </div>
@@ -145,23 +152,52 @@
       </div>
     </header>
     <main class="main-container">
-      <Slide />
-      <Information />
-      
-      <!-- <router-view></router-view> -->
+      <router-view></router-view>
     </main>
     <footer class="footer-container">
       <div class="container">
         <div class="footer-top">
           <ul class="content-box">
-            <li class="content">개인정보처리방침</li>
-            <li class="content">서비스이용약관</li>
-            <li class="content">멤버십이용약관</li>
-            <li class="content">할리스카드이용약관</li>
-            <li class="content">고객문의</li>
-            <li class="content">고객설문</li>
-            <li class="content">사이트맵</li>
-            <li class="content">BI 소개</li>
+            <li class="content">
+              <router-link to="prepare">
+          개인정보처리방침
+              </router-link>
+            </li>
+            <li class="content">
+              <router-link to="prepare">
+          서비스이용약관
+              </router-link>
+            </li>
+            <li class="content">
+              <router-link to="prepare">
+          멤버십이용약관
+              </router-link>
+            </li>
+            <li class="content">
+              <router-link to="prepare">
+          할리스카드이용약관
+              </router-link>
+            </li>
+            <li class="content">
+              <router-link to="prepare">
+          고객문의
+              </router-link>
+            </li>
+            <li class="content">
+              <router-link to="prepare">
+          고객설문
+              </router-link>
+            </li>
+            <li class="content">
+              <router-link to="prepare">
+          사이트맵
+              </router-link>
+            </li>
+            <li class="content">
+              <router-link to="prepare">
+          BI 소개
+              </router-link>
+            </li>
           </ul>
         </div>
         <div class="footer-bot">
@@ -182,13 +218,11 @@
 </template>
 
 <script>
-import Slide from '@/components/main/mainSlide.vue'
-import Information from '@/components/main/mainInfo.vue'
+
 export default {
   name: 'MainComponent',
   components: {
-    Slide,
-    Information,
+   
 
   },
   data() {

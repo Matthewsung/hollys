@@ -119,7 +119,7 @@
         </div>
       </div>
     </div>
-    <div class="main-sns-wrap">
+    <footer class="main-sns-wrap">
       <h4>HOLLYS Live</h4>
       <ul class="sns-box">
         <li class="sns-item">
@@ -132,7 +132,7 @@
           <img src="@/assets/img/sns_blog.gif" alt="블로그">
         </li>
       </ul>
-    </div>
+    </footer>
   </div>
 </template>
 
@@ -258,7 +258,7 @@ export default {
             font-weight: 600;            
           }
 
-          .desc-title {}
+          // .desc-title {}
 
           .desc-date {
             text-align: right;
@@ -307,7 +307,7 @@ export default {
   }
   .main-container {
     @include container() ;
-    
+
     .main-info-wrap {
       padding: 48px 0;
       display: flex;
