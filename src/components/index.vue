@@ -1,10 +1,12 @@
 <template>
   <div class="main-page-container">
-    <div class="menu-container">
-      <header class="top-menu-wrap">
+    <header class="menu-container">
+      <div class="top-menu-wrap">
         <div class="container">
           <ul class="company-wrap">
-            <li>
+            <li 
+              @click="movePage('https://www.hollys.co.kr/franchise/franchise.do')"
+            >
               <img 
                 src="@/assets/img/gnb_smenu01.png" 
                 alt="창업설명회"
@@ -53,13 +55,13 @@
             </li>
           </ul>
         </div>
-      </header>
-      <div 
-        class="bot-menu-wrap"
-        @mouseenter="showMenu"
-      >
+      </div>
+      <div class="bot-menu-wrap">
         <div class="container">
-          <ul class="menu-item-box">
+          <ul 
+            class="menu-item-box"
+            @mouseenter="showMenu"
+          >
             <li class="menu-item">
               <h6>Menu</h6>
               <p
@@ -101,7 +103,7 @@
         <div 
           class="sub-menu-box"
           :class="{'show-menu': menuShow}"
-          @mouseleave="notShowMenu"
+          @mouseleave="menuHide"
         >
           <div class="container">
             <ul class="sub-menu-item-box">
@@ -141,12 +143,12 @@
           </div>
         </div>
       </div>
-    </div>
+    </header>
     <main class="main-container">
-      <div class="container">
-        <!-- <router-view></router-view> -->
-        <Slide />
-      </div>
+      <Slide />
+      <Information />
+      
+      <!-- <router-view></router-view> -->
     </main>
     <footer class="footer-container">
       <div class="container">
@@ -181,10 +183,13 @@
 
 <script>
 import Slide from '@/components/main/mainSlide.vue'
+import Information from '@/components/main/mainInfo.vue'
 export default {
   name: 'MainComponent',
   components: {
     Slide,
+    Information,
+
   },
   data() {
     return{
@@ -193,16 +198,18 @@ export default {
   },
   methods: {
     showMenu() {
-      this.menuShow = true
-      // if(e.target.className === 'menu-item') {
-      //   this.menuShow = true
-      // }
-      // else if(e.target.className === '다음 섹션') {
-      //   this.menuShow = false
-      // }
+      if(this.menuShow === true) {
+        this.menuShow = true
+      }
+      else {
+        this.menuShow = true
+      }
     },
-    notShowMenu() {
+    menuHide() {
       this.menuShow = false
+    },
+    movePage(path) {
+      window.open(path)
     }
   }
 
@@ -211,6 +218,7 @@ export default {
 
 <style lang="scss" scoped>
   @import '@/assets/scss/global.scss';  
+
   .main-page-container {
 
     .menu-container { 
@@ -275,6 +283,7 @@ export default {
   
       .bot-menu-wrap {
         margin-top: 8px;
+        position: relative;
   
         .container {
           @include container();
@@ -282,10 +291,6 @@ export default {
           .menu-item-box {
             display: flex;
             position: relative;
-            
-            // &:hover .menu-item p {
-            //   display: block;
-            // }
   
             .menu-item {
               width: calc(100% / 6);
@@ -319,7 +324,12 @@ export default {
           background:$hollys-gray;
           overflow: hidden;
           transition: all 0.4s;
-  
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 56px;
+          z-index: 9;
+
           &.show-menu {
             height: 270px;
             padding: 16px 0;
