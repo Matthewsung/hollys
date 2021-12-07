@@ -32,7 +32,7 @@
 </template>
 
 <script>
-// import { KakaoLogin } from '@/api/index.js';
+// import { KakaoLogin } from '@/api/kakao.js';
 
 export default {
   name: 'loginComponent',
