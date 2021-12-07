@@ -70,10 +70,12 @@
             @mouseenter="showMenu"
           >
             <li class="menu-item">
-              <h6>Menu</h6>
-              <p
-                :class="{'show': menuShow}"
-              >메뉴</p>
+              <router-link to="/menu">
+                <h6>Menu</h6>
+                <p
+                  :class="{'show': menuShow}"
+                >메뉴</p>
+              </router-link>
             </li>
             <li class="menu-item">
               <h6>HOLLYS Mall</h6>
@@ -115,13 +117,41 @@
           <div class="container">
             <ul class="sub-menu-item-box">
               <li class="sub-menu-item">
-                <p>COFFEE</p>
-                <p>라떼 · 초콜릿 · 티</p>
-                <p>할리치노 · 빙수</p>
-                <p>스파클링</p>
-                <p>푸드</p>
-                <p>MD상품</p>
-                <p>MD식품</p>
+                <router-link to="/menu/espresso">
+                  <p>
+                    COFFEE
+                  </p>
+                </router-link>
+                <router-link to="/menu/signature">
+                  <p>
+                    라떼·초콜릿·티
+                  </p>
+                </router-link>
+                <router-link to="/menu/hollyccino">
+                  <p>
+                    할리치노·빙수
+                  </p>
+                </router-link>
+                <router-link to="/menu/tea">
+                  <p>
+                    스파클링
+                  </p>
+                </router-link>
+                <router-link to="/menu/bakery">
+                  <p>
+                    푸드
+                  </p>
+                </router-link>
+                <router-link to="/menu/md">
+                  <p>
+                    MD상품
+                  </p>
+                </router-link>
+                <router-link to="/menu/bean">
+                  <p>
+                    MD식품
+                  </p>
+                </router-link>
               </li>
               <li class="sub-menu-item">
                 <p>할리스콘</p>
@@ -160,42 +190,42 @@
           <ul class="content-box">
             <li class="content">
               <router-link to="prepare">
-          개인정보처리방침
+                개인정보처리방침
               </router-link>
             </li>
             <li class="content">
               <router-link to="prepare">
-          서비스이용약관
+                서비스이용약관
               </router-link>
             </li>
             <li class="content">
               <router-link to="prepare">
-          멤버십이용약관
+                멤버십이용약관
               </router-link>
             </li>
             <li class="content">
               <router-link to="prepare">
-          할리스카드이용약관
+                할리스카드이용약관
               </router-link>
             </li>
             <li class="content">
               <router-link to="prepare">
-          고객문의
+                고객문의
               </router-link>
             </li>
             <li class="content">
               <router-link to="prepare">
-          고객설문
+                고객설문
               </router-link>
             </li>
             <li class="content">
               <router-link to="prepare">
-          사이트맵
+                사이트맵
               </router-link>
             </li>
             <li class="content">
               <router-link to="prepare">
-          BI 소개
+                BI 소개
               </router-link>
             </li>
           </ul>
@@ -243,7 +273,11 @@ export default {
       this.menuShow = false
     },
     movePage(path) {
-      window.open(path)
+      this.$router.push(
+        {
+          path: `/menu/${path}`,
+        }
+      )
     }
   }
 
@@ -317,6 +351,7 @@ export default {
   
       .bot-menu-wrap {
         margin-top: 8px;
+        border-bottom: 2px solid $hollys-red;
         position: relative;
   
         .container {
@@ -336,6 +371,7 @@ export default {
                 color: #fff;
                 background: $hollys-red;
               }
+
               h6 {
                 margin-top: 8px;
               }
