@@ -70,7 +70,7 @@
             @mouseenter="showMenu"
           >
             <li class="menu-item">
-              <router-link to="/menu">
+              <router-link to="/menu/espresso">
                 <h6>Menu</h6>
                 <p
                   :class="{'show': menuShow}"

@@ -12,7 +12,7 @@
       <div class="item-box">
         <div class="item-img">
           <img 
-            :src="mainImg" 
+            :src="menuItem.img" 
             :alt="menuItem.nameKo">
         </div>
         <div class="item-desc">
@@ -79,6 +79,47 @@
           
         </div>
       </div>
+      <div class="other-menus">
+        <ul 
+          class="other-menus-box"
+          :class="{'other-menu-box-active':  moreBtn === 'CLOSE'}"
+        >
+          <li 
+            class="other-menu" 
+            v-for="(item, index) in allItems" 
+            :key="item.nameKo + '_' + index"
+          >  
+            <div 
+              class="other-menu-img-box"
+              @click="changeMenu(index)"
+            >
+              <img 
+                :src="item.img" 
+                :alt="item.nameKo"
+              >
+            </div>
+            <p class="other-menu-name">
+              {{ item.nameKo }}
+            </p>
+          </li>
+        </ul>
+
+        <div 
+          class="hidden-menu-box"
+          @click="showMoreMenus"
+        >
+          <div class="hidden-menu"></div>
+          <div class="hidden-btn">
+            <p>{{ moreBtn }}</p>
+            <p 
+              class="arrow-btn"
+              :class="{'arrow-rotate': moreBtn === 'CLOSE' }"
+            >
+              <img src="@/assets/img/arrow-white.svg" alt="더보기">
+            </p>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -90,7 +131,7 @@ import {
 } from '@/api/menu.js'
 
 const coffeeImg = [
-  require('@/assets/img/menu/vanila_oat_latte.png'),
+  require('@/assets/img/menu/vanila_oat_latte.png'),  
   require('@/assets/img/menu/americano_de.png'),
   require('@/assets/img/menu/Caffe_Latte_De.png'),
   require('@/assets/img/menu/Vanilla_Delight_De.png'),
@@ -115,17 +156,56 @@ export default {
   data() {
     return {
       menuType: {},
+      allItems: [],
       menuItem: {},
-      mainImg: null,
-      subImg: null,
+      moreBtn: 'MORE',
+      menuIndex: 0,
     }
   },
-  mounted() {
+  beforeMount() {
+    // 커피일때는 고정
     this.menuType = menuType[0]
-    this.menuItem = beverage[0]
-    this.mainImg = coffeeImg[0]
-    this.subImg = coffeeImg.splice(0, 1)
-    console.log(this.subImg)
+    // type에 따라 숫자 변화
+    this.allItems = [...beverage]
+    this.chkItems()
+  },
+  methods: {
+    showMoreMenus() {
+      if(this.moreBtn === 'MORE') {
+        this.moreBtn = 'CLOSE'
+      }
+      else {
+        this.moreBtn = 'MORE'
+      }
+    },
+    changeMenu(index) {
+      this.$router.push(
+        {
+          path: `/menu/espresso?type=${index}`
+        }
+      )
+    },
+    chkItems() {
+      if(this.$route.path === '/menu/espresso') {
+        this.menuIndex = 0
+      }
+      else{
+        this.menuIndex = this.$route.query.type
+      }
+      this.allItems.map( (item, index) => {
+        item.img = coffeeImg[index]
+      })
+      this.menuItem = beverage[this.menuIndex]
+    }
+
+  },
+  watch: {
+    $route(to, from) {
+      if(to.query.type !== from.query.type) {
+        this.menuIndex = 1
+        console.log(this.menuIndex)
+      }
+    }
   }
 
 }
@@ -135,6 +215,7 @@ export default {
   @import '@/assets/scss/global.scss';
 
   .espresso-container {
+    width: calc(100% - 190px - (32px * 2));
     padding: 0 32px;
 
     .content-header {
@@ -245,11 +326,94 @@ export default {
         }
 
         .item-allergy {
+
           p {
+            color: $hollys-gray;
+
             &:last-child {
               font-weight: 600;
               margin-top: 4px;
             }
+          }
+        }
+      }
+
+      .other-menus {
+        margin-bottom: 32px;
+
+        .other-menus-box {
+          height: 130px;
+          color: $hollys-gray;
+          margin: 32px 0;
+          overflow: hidden;
+          display: flex;
+          flex-wrap: wrap;
+
+          &.other-menu-box-active {
+            height: auto;
+          }
+  
+          .other-menu { 
+            width: calc(100% / 6);
+            cursor: pointer;
+  
+            &:hover .other-menu-name {
+              text-decoration: underline;
+            }
+  
+            .other-menu-img-box {}
+  
+            .other-menu-name {
+              font-size: 11px;
+              text-align: center;
+            }
+          }
+        }
+
+        .hidden-menu-box {
+          position: relative;
+
+          .hidden-menu {
+            width: 100%;
+            height: 1px;
+            background: #d9d9d9;
+          }
+
+          .hidden-btn {
+            width: 80px;
+            height: 80px;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 50%;
+            color: #fff;
+            background: $hollys-red;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+
+            p {
+
+              &:first-child {
+                margin-top: 17px;
+              }
+
+              &.arrow-btn {
+                width: 25px;
+                height: 25px;
+                transition: all 0.4s;
+
+                &.arrow-rotate {
+                  transform: rotateZ(180deg);
+                }
+              }
+            }
+
           }
         }
       }
