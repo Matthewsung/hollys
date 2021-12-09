@@ -79,6 +79,10 @@
           
         </div>
       </div>
+      <BarChart 
+        :chartId="`espresso_${menuIndex}`"
+        :chartData="menuItem.nutrition"
+      />
       <div class="other-menus">
         <ul 
           class="other-menus-box"
@@ -129,6 +133,7 @@ import {
   menuType,
   beverage,
 } from '@/api/menu.js'
+import BarChart from '../common/barChart.vue'
 
 const coffeeImg = [
   require('@/assets/img/menu/vanila_oat_latte.png'),  
@@ -153,6 +158,9 @@ const coffeeImg = [
 ]
 export default {
   name: 'espressoComponent',
+  components: {
+    BarChart,
+  },
   data() {
     return {
       menuType: {},
@@ -163,10 +171,17 @@ export default {
     }
   },
   beforeMount() {
-    // 커피일때는 고정
+    if(this.$route.query.type == undefined) {
+      this.$route.query.type = 0
+    }
+    else if(this.$route.query.type == this.menuIndex) {
+      // 두번누르면 오류 나는거 고치려는데 실패
+      console.log(111)
+    }
     this.menuType = menuType[0]
-    // type에 따라 숫자 변화
+    // type에 따라 query변화
     this.allItems = [...beverage]
+    
     this.chkItems()
   },
   methods: {
@@ -186,8 +201,12 @@ export default {
       )
     },
     chkItems() {
-      if(this.$route.path === '/menu/espresso') {
-        this.menuIndex = 0
+      if(this.$route.query === ''){
+        this.$router.push(
+          {
+            path: '/menu/espresso?type=0'
+          }
+        ) 
       }
       else{
         this.menuIndex = this.$route.query.type
@@ -197,13 +216,11 @@ export default {
       })
       this.menuItem = beverage[this.menuIndex]
     }
-
   },
   watch: {
     $route(to, from) {
       if(to.query.type !== from.query.type) {
-        this.menuIndex = 1
-        console.log(this.menuIndex)
+        this.chkItems()
       }
     }
   }
