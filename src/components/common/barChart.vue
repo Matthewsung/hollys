@@ -2,6 +2,7 @@
   <canvas 
     :id="chartId"
     class="bar-chart"
+    style="width:100%; height: 320px"
   >
   </canvas>
 </template>
@@ -18,13 +19,18 @@ export default {
   data() {
     return {
       myChart: null,
+      options: null,
+      ctx : null
     }
   },
   mounted() {
-    const ctx = document.getElementById(this.chartId).getContext('2d')
-    this.myChart = new Chart(ctx, this.makeChartOptions())
+    this.drawChart()
   },
   methods: {
+    drawChart() {
+      this.ctx = document.getElementById(this.chartId).getContext('2d')
+      this.myChart = new Chart(this.ctx, this.makeChartOptions())
+    },
     makeChartOptions() {
       let menuData = [...this.chartData]
       const label = Object.values(menuData[0])
@@ -70,7 +76,7 @@ export default {
             bodyFontSize: 13,
           },
           responsive: false,
-          aspectRatio: 2.2,
+          aspectRatio: 1,
           scales: {
             xAxes: [
               {
@@ -94,6 +100,14 @@ export default {
       }
     },
   },
+  watch: {
+    $route(to, from) {
+      if(to.query.type !== from.query.type) {
+        this.myChart.destroy()
+        this.myChart = new Chart(this.ctx, this.makeChartOptions())
+      }
+    }
+  }
 }
 </script>
 

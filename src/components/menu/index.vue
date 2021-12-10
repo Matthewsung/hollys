@@ -53,19 +53,24 @@
           </div>
         </div>
       </aside>
-      <router-view></router-view>
+      <MenuComponent />
     </div>
   </div>
 </template>
 
 <script>
+import MenuComponent from './menu.vue'
 export default {
   name: 'menuComponent',
-  
+  components: {
+    MenuComponent,
+  },
   data() {
     return {
       menuList: 'espresso'
     }
+  },
+  mounted() {
   },
   methods: {
     chkActive() {

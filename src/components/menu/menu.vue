@@ -1,6 +1,7 @@
 <template>
   <div class="espresso-container">
-    <header class="content-header">
+    <img :src="menuItem.img" alt="">
+    <!-- <header class="content-header">
       <div class="menu-history">
         {{menuType.menuHistory}}
       </div>
@@ -124,7 +125,7 @@
           </div>
         </div>
       </div>
-    </main>
+    </main> -->
   </div>
 </template>
 
@@ -133,33 +134,69 @@ import {
   menuType,
   beverage,
 } from '@/api/menu.js'
-import BarChart from '../common/barChart.vue'
+// import BarChart from '../common/barChart.vue'
 
-const coffeeImg = [
-  require('@/assets/img/menu/vanila_oat_latte.png'),  
-  require('@/assets/img/menu/americano_de.png'),
-  require('@/assets/img/menu/Caffe_Latte_De.png'),
-  require('@/assets/img/menu/Vanilla_Delight_De.png'),
-  require('@/assets/img/menu/Premium_Blend_Americano.png'),
-  require('@/assets/img/menu/Cold_Brew_Delight.png'),
-  require('@/assets/img/menu/Double_Vanilla_Delight.png'),
-  require('@/assets/img/menu/Premium Blend Deep Latte.png'),
-  require('@/assets/img/menu/Vanilla_Delight.png'),
-  require('@/assets/img/menu/Ristretto_Delight.png'),
-  require('@/assets/img/menu/Cold_Brew_Latte.png'),
-  require('@/assets/img/menu/Cold_Brew.png'),
-  require('@/assets/img/menu/Caramel_Macchiato.png'),
-  require('@/assets/img/menu/Caffe_Mocha.png'),
-  require('@/assets/img/menu/Cappuccino.png'),
-  require('@/assets/img/menu/Caffe_Latte.png'),
-  require('@/assets/img/menu/Caffe-Americano.png'),
-  require('@/assets/img/menu/Affogato.png'),
-  require('@/assets/img/menu/Espresso.png'),
-]
+const coffeeImg = {
+  espresso: [
+    require('@/assets/img/menu/espresso/vanila_oat_latte.png'),  
+    require('@/assets/img/menu/espresso/americano_de.png'),
+    require('@/assets/img/menu/espresso/Caffe_Latte_De.png'),
+    require('@/assets/img/menu/espresso/Vanilla_Delight_De.png'),
+    require('@/assets/img/menu/espresso/Premium_Blend_Americano.png'),
+    require('@/assets/img/menu/espresso/Cold_Brew_Delight.png'),
+    require('@/assets/img/menu/espresso/Double_Vanilla_Delight.png'),
+    require('@/assets/img/menu/espresso/Premium Blend Deep Latte.png'),
+    require('@/assets/img/menu/espresso/Vanilla_Delight.png'),
+    require('@/assets/img/menu/espresso/Ristretto_Delight.png'),
+    require('@/assets/img/menu/espresso/Cold_Brew_Latte.png'),
+    require('@/assets/img/menu/espresso/Cold_Brew.png'),
+    require('@/assets/img/menu/espresso/Caramel_Macchiato.png'),
+    require('@/assets/img/menu/espresso/Caffe_Mocha.png'),
+    require('@/assets/img/menu/espresso/Cappuccino.png'),
+    require('@/assets/img/menu/espresso/Caffe_Latte.png'),
+    require('@/assets/img/menu/espresso/Caffe-Americano.png'),
+    require('@/assets/img/menu/espresso/Affogato.png'),
+    require('@/assets/img/menu/espresso/Espresso.png'),
+  ],
+  signature: [
+    require('@/assets/img/menu/signature/1.png'),  
+    require('@/assets/img/menu/signature/2.png'),
+    require('@/assets/img/menu/signature/3.png'),
+    require('@/assets/img/menu/signature/4.png'),
+    require('@/assets/img/menu/signature/5.png'),
+    require('@/assets/img/menu/signature/6.png'),
+    require('@/assets/img/menu/signature/7.png'),
+    require('@/assets/img/menu/signature/8.png'),
+    require('@/assets/img/menu/signature/9.png'),
+    require('@/assets/img/menu/signature/10.png'),
+    require('@/assets/img/menu/signature/11.png'),
+    require('@/assets/img/menu/signature/12.png'),
+    require('@/assets/img/menu/signature/13.png'),
+    require('@/assets/img/menu/signature/14.png'),
+    require('@/assets/img/menu/signature/15.png'),
+    require('@/assets/img/menu/signature/16.png'),
+    require('@/assets/img/menu/signature/17.png'),
+  ],
+  hollyccino: [
+
+  ],
+  tea: [
+
+  ],
+  bakery: [
+
+  ],
+  md: [
+
+  ],
+  bean: [
+
+  ],
+}
 export default {
   name: 'espressoComponent',
   components: {
-    BarChart,
+    // BarChart,
   },
   data() {
     return {
@@ -167,24 +204,30 @@ export default {
       allItems: [],
       menuItem: {},
       moreBtn: 'MORE',
+      beverage: null,
       menuIndex: 0,
     }
   },
-  beforeMount() {
-    if(this.$route.query.type == undefined) {
+  mounted() {
+    // 메뉴 타입을 저장 완료
+    this.chkBeverage()
+    this.menuType = menuType[this.beverage]
+
+    //query가 없을때 0 으로 고정
+    if(this.$route.query.type === undefined){
       this.$route.query.type = 0
     }
-    else if(this.$route.query.type == this.menuIndex) {
-      // 두번누르면 오류 나는거 고치려는데 실패
-      console.log(111)
-    }
-    this.menuType = menuType[0]
-    // type에 따라 query변화
-    this.allItems = [...beverage]
     
-    this.chkItems()
+    // 메뉴 타입에 따라 모든 음료 메뉴 설정
+    this.allItems = [...beverage[this.beverage]]
+
+    // 타입에 따라 메뉴 설정
+    this.initialItems()
   },
   methods: {
+    chkBeverage() {
+      this.beverage = this.$route.params.beverage
+    },
     showMoreMenus() {
       if(this.moreBtn === 'MORE') {
         this.moreBtn = 'CLOSE'
@@ -194,17 +237,19 @@ export default {
       }
     },
     changeMenu(index) {
+      const beverage = this.$route.params.beverage;
+      console.log(index)
       this.$router.push(
         {
-          path: `/menu/espresso?type=${index}`
+          path: `/menu/${beverage}?type=${index}`
         }
       )
     },
-    chkItems() {
+    initialItems() {
       if(this.$route.query === ''){
         this.$router.push(
           {
-            path: '/menu/espresso?type=0'
+            path: `/menu/${beverage}?type=0`
           }
         ) 
       }
@@ -212,18 +257,18 @@ export default {
         this.menuIndex = this.$route.query.type
       }
       this.allItems.map( (item, index) => {
-        item.img = coffeeImg[index]
+        item.img = coffeeImg[this.beverage][index]
       })
-      this.menuItem = beverage[this.menuIndex]
+      this.menuItem = beverage[this.beverage][this.menuIndex]
     }
   },
-  watch: {
-    $route(to, from) {
-      if(to.query.type !== from.query.type) {
-        this.chkItems()
-      }
-    }
-  }
+  // watch: {
+  //   $route(to, from) {
+  //     if(to.query.type !== from.query.type) {
+  //       this.initialItems()
+  //     }
+  //   }
+  // }
 
 }
 </script>
