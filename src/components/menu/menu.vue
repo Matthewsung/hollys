@@ -1,7 +1,6 @@
 <template>
   <div class="espresso-container">
-    <img :src="menuItem.img" alt="">
-    <!-- <header class="content-header">
+    <header class="content-header">
       <div class="menu-history">
         {{menuType.menuHistory}}
       </div>
@@ -18,8 +17,30 @@
         </div>
         <div class="item-desc">
           <div class="item-share">
-            <p class="share-site facebook">페이스북</p>
-            <p class="share-site twitter">트위터</p>
+            <p 
+              class="share-site facebook"
+              @click="shareMenu('facebook')"
+            >
+              페이스북
+            </p>
+            <p 
+              class="share-site twitter"
+              @click="shareMenu('twitter')"
+            >
+              트위터
+            </p>
+            <p 
+              class="share-site kakao"
+              @click="shareMenu('kakao')"
+            >
+              카카오톡
+            </p>
+            <p 
+              class="share-site naver"
+              @click="shareMenu('naver')"
+            >
+              네이버
+            </p>
             <p class="badge">시즌음료</p>
           </div>
           <div class="item-info">
@@ -125,7 +146,7 @@
           </div>
         </div>
       </div>
-    </main> -->
+    </main>
   </div>
 </template>
 
@@ -134,7 +155,13 @@ import {
   menuType,
   beverage,
 } from '@/api/menu.js'
-// import BarChart from '../common/barChart.vue'
+import {
+  facebook,
+  twitter,
+  kakao,
+  naver,
+} from '@/api/shareSNS.js'
+import BarChart from '../common/barChart.vue'
 
 const coffeeImg = {
   espresso: [
@@ -177,26 +204,11 @@ const coffeeImg = {
     require('@/assets/img/menu/signature/16.png'),
     require('@/assets/img/menu/signature/17.png'),
   ],
-  hollyccino: [
-
-  ],
-  tea: [
-
-  ],
-  bakery: [
-
-  ],
-  md: [
-
-  ],
-  bean: [
-
-  ],
 }
 export default {
   name: 'espressoComponent',
   components: {
-    // BarChart,
+    BarChart,
   },
   data() {
     return {
@@ -208,25 +220,27 @@ export default {
       menuIndex: 0,
     }
   },
-  mounted() {
+  beforeMount() {
     // 메뉴 타입을 저장 완료
     this.chkBeverage()
-    this.menuType = menuType[this.beverage]
-
-    //query가 없을때 0 으로 고정
-    if(this.$route.query.type === undefined){
-      this.$route.query.type = 0
-    }
-    
-    // 메뉴 타입에 따라 모든 음료 메뉴 설정
-    this.allItems = [...beverage[this.beverage]]
-
     // 타입에 따라 메뉴 설정
     this.initialItems()
+  },
+  computed: {
+    shareLink() {
+      return `http://localhost:8080${this.$route.path}?type=${this.$route.query.type}`
+    }
   },
   methods: {
     chkBeverage() {
       this.beverage = this.$route.params.beverage
+      this.menuType = menuType[this.beverage]
+      //query가 없을때 0 으로 고정
+      if(this.$route.query.type === undefined){
+        this.$route.query.type = 0
+      }
+      // 메뉴 타입에 따라 모든 음료 메뉴 설정
+      this.allItems = [...beverage[this.beverage]]
     },
     showMoreMenus() {
       if(this.moreBtn === 'MORE') {
@@ -238,7 +252,6 @@ export default {
     },
     changeMenu(index) {
       const beverage = this.$route.params.beverage;
-      console.log(index)
       this.$router.push(
         {
           path: `/menu/${beverage}?type=${index}`
@@ -256,19 +269,48 @@ export default {
       else{
         this.menuIndex = this.$route.query.type
       }
+
       this.allItems.map( (item, index) => {
         item.img = coffeeImg[this.beverage][index]
       })
       this.menuItem = beverage[this.beverage][this.menuIndex]
+    },
+    shareMenu(type) {
+      if( type === 'facebook') {
+        facebook({
+          url: this.shareLink,
+        })
+      }
+      else if( type === 'twitter') {
+        twitter({
+          url: this.shareLink,
+          title: this.menuItem.nameKo
+        })
+      }
+      else if( type === 'kakao') {
+        kakao({
+          url: this.shareLink,
+          title: this.menuItem.nameKo,
+          img: this.menuItem.img,
+          nameKo: this.menuItem.nameKo
+        })
+      }
+      else if( type === 'naver') {
+        naver({
+          url: this.shareLink,
+          title: this.menuItem.nameKo
+        })
+      }
     }
   },
-  // watch: {
-  //   $route(to, from) {
-  //     if(to.query.type !== from.query.type) {
-  //       this.initialItems()
-  //     }
-  //   }
-  // }
+  watch: {
+    $route(to, from) {
+      if(to.query.type !== from.query.type) {
+        this.chkBeverage()
+        this.initialItems()
+      }
+    }
+  }
 
 }
 </script>
@@ -313,6 +355,7 @@ export default {
             .share-site {
               width: 24px;
               height: 24px;
+              border-radius: 50%;
               text-indent: -99999px;
 
               &.facebook {
@@ -321,6 +364,14 @@ export default {
 
               &.twitter {
                 background: url("../../assets/img/sns_twitter.gif") no-repeat center / cover;
+              }
+              
+              &.kakao {
+                background: url("../../assets/img/sns_kakao.png") no-repeat center / cover;
+              }
+
+              &.naver {
+                background: url("../../assets/img/sns_naver.png") no-repeat center / cover;
               }
             }
 

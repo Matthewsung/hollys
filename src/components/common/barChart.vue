@@ -30,11 +30,13 @@ export default {
     drawChart() {
       this.ctx = document.getElementById(this.chartId).getContext('2d')
       this.myChart = new Chart(this.ctx, this.makeChartOptions())
+
+
     },
     makeChartOptions() {
       let menuData = [...this.chartData]
       const label = Object.values(menuData[0])
-      label.shift()
+      label.shift() 
       
       let tmp = Object.values(menuData[1])
       let hotLabel = tmp[0];

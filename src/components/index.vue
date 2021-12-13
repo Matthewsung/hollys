@@ -5,7 +5,7 @@
         <div class="container">
           <ul class="company-wrap">
             <li>
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 <img 
                   src="@/assets/img/gnb_smenu01.png" 
                   alt="창업설명회"
@@ -13,7 +13,7 @@
               </router-link>
             </li>
             <li class="accademy">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 <img 
                   src="@/assets/img/gnb_smenu02_2.gif" 
                   alt="아카데미"
@@ -21,7 +21,7 @@
               </router-link>
             </li>
             <li class="accademy">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 <img 
                   src="@/assets/img/gnb_smenu04.gif" 
                   alt="기업특판"
@@ -41,22 +41,22 @@
               </router-link>
             </li>
             <li>
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 <img src="@/assets/img/util_join.gif" alt="멤버십 가입">
               </router-link>
             </li>
             <li>
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 <img src="@/assets/img/util_09.gif" alt="고객센터">
               </router-link>
             </li>
             <li class="language">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 <img src="@/assets/img/util_05.gif" alt="English">
               </router-link>
             </li>
             <li class="language">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 <img src="@/assets/img/util_chinese.gif" alt="中文">
               </router-link>
             </li>
@@ -78,34 +78,44 @@
               </router-link>
             </li>
             <li class="menu-item">
-              <h6>HOLLYS Mall</h6>
-              <p
-                :class="{'show':  menuShow}"
-              >할리스 몰</p>
+              <router-link to="/prepare">
+                <h6>HOLLYS Mall</h6>
+                <p
+                  :class="{'show':  menuShow}"
+                >할리스 몰</p>
+              </router-link>
             </li>
             <li class="menu-item">
-              <h6>Membership</h6>
-              <p
-                :class="{'show':  menuShow}"
-              >멤버십</p>
+              <router-link to="/prepare">
+                <h6>Membership</h6>
+                <p
+                  :class="{'show':  menuShow}"
+                >멤버십</p>
+              </router-link>
             </li>
             <li class="menu-item">
-              <h6>HOLLYS News</h6>
-              <p
-                :class="{'show':  menuShow}"
-              >이벤트 및 공지</p>
+              <router-link to="/prepare">
+                <h6>HOLLYS News</h6>
+                <p
+                  :class="{'show':  menuShow}"
+                >이벤트 및 공지</p>
+              </router-link>
             </li>
             <li class="menu-item">
-              <h6>Store</h6>
-              <p
-                :class="{'show':  menuShow}"
-              >매장</p>
+              <router-link to="/prepare">
+                <h6>Store</h6>
+                <p
+                  :class="{'show':  menuShow}"
+                >매장</p>
+              </router-link>
             </li>
             <li class="menu-item">
-              <h6>HOLLYS is</h6>
-              <p
-                :class="{'show':  menuShow}"
-              >할리스 소개</p>
+              <router-link to="/prepare">
+                <h6>HOLLYS is</h6>
+                <p
+                  :class="{'show':  menuShow}"
+                >할리스 소개</p>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -127,27 +137,27 @@
                     라떼·초콜릿·티
                   </p>
                 </router-link>
-                <router-link to="/menu/hollyccino">
+                <router-link to="/prepare">
                   <p>
                     할리치노·빙수
                   </p>
                 </router-link>
-                <router-link to="/menu/tea">
+                <router-link to="/prepare">
                   <p>
                     스파클링
                   </p>
                 </router-link>
-                <router-link to="/menu/bakery">
+                <router-link to="/prepare">
                   <p>
                     푸드
                   </p>
                 </router-link>
-                <router-link to="/menu/md">
+                <router-link to="/prepare">
                   <p>
                     MD상품
                   </p>
                 </router-link>
-                <router-link to="/menu/bean">
+                <router-link to="/prepare">
                   <p>
                     MD식품
                   </p>
@@ -189,42 +199,42 @@
         <div class="footer-top">
           <ul class="content-box">
             <li class="content">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 개인정보처리방침
               </router-link>
             </li>
             <li class="content">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 서비스이용약관
               </router-link>
             </li>
             <li class="content">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 멤버십이용약관
               </router-link>
             </li>
             <li class="content">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 할리스카드이용약관
               </router-link>
             </li>
             <li class="content">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 고객문의
               </router-link>
             </li>
             <li class="content">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 고객설문
               </router-link>
             </li>
             <li class="content">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 사이트맵
               </router-link>
             </li>
             <li class="content">
-              <router-link to="prepare">
+              <router-link to="/prepare">
                 BI 소개
               </router-link>
             </li>

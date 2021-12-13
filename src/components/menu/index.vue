@@ -13,27 +13,27 @@
               라떼·초콜릿·티
             </li>
           </router-link>
-          <router-link to="/menu/hollyccino">
+          <router-link to="/prepare">
             <li class="side-menu">
               할리치노·빙수
             </li>
           </router-link>
-          <router-link to="/menu/tea">
+          <router-link to="/prepare">
             <li class="side-menu">
               스파클링
             </li>
           </router-link>
-          <router-link to="/menu/bakery">
+          <router-link to="/prepare">
             <li class="side-menu">
               푸드
             </li>
           </router-link>
-          <router-link to="/menu/md">
+          <router-link to="/prepare">
             <li class="side-menu">
               MD상품
             </li>
           </router-link>
-          <router-link to="/menu/bean">
+          <router-link to="/prepare">
             <li class="side-menu">
               MD식품
             </li>
@@ -67,16 +67,8 @@ export default {
   },
   data() {
     return {
-      menuList: 'espresso'
     }
   },
-  mounted() {
-  },
-  methods: {
-    chkActive() {
-      console.log(this.$route)
-    }
-  }
 }
 </script>
 
