@@ -36,7 +36,7 @@
           </div>
           <ul class="top-menu-right">
             <li>
-              <router-link to="login">
+              <router-link to="/login">
                 <img src="@/assets/img/util_login.gif" alt="멤버십 로그인">
               </router-link>
             </li>

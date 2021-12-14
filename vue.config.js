@@ -7,5 +7,5 @@ module.exports = {
         'styles': path.resolve('./src/styles')
       }
     }
-  }
+  },
 }

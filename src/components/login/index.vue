@@ -32,7 +32,7 @@
 </template>
 
 <script>
-// import { KakaoLogin } from '@/api/kakao.js';
+import { KakaoLogin } from '@/api/kakao.js';
 
 export default {
   name: 'loginComponent',
@@ -46,8 +46,13 @@ export default {
   },
   methods: {
     loginKakao() {
-      // KakaoLogin(111)
-      console.log(222)
+      
+    const redirect = 'http://localhost:8080/login'
+
+    window.Kakao.Auth.authorize({
+      redirectUri: redirect
+    });
+      KakaoLogin()
     }
   }
 }
@@ -85,6 +90,13 @@ export default {
         .login-box {
           text-align: center;
           margin: 48px 0;
+
+          .kakao {
+            width: 185px;
+            height: 45px;
+            margin: 0 auto;
+            cursor: pointer;
+          }
         }
       }
 

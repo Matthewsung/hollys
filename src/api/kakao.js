@@ -1,16 +1,21 @@
-// import axios from 'axios';
-// const KAKAO_API = {
-//   key: 'e768e74f7c8da4ab09a40d17ee29fe2e',
-//   redirect: 'http://localhost:8080/login/kakao'
-// };
-const KakaoLogin = (val) => {
-  console.log(val)
-  // axios({
-  //   method: 'GET',
-  //   path: `kauth.kakao.com//oauth/authorize?client_id=${KAKAO_API.key}&redirect_uri=${KAKAO_API.redirect}&response_type=code`
-  // })
-}
+import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config()
 
-export default { 
-  KakaoLogin,
+const KAKAO_API = {
+  key: process.env.VUE_APP_REST_KEY,
+  redirect: 'http://localhost:8080/login'
+};
+
+export const KakaoLogin = () => {
+  const path = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_API.key}&redirect_uri=${KAKAO_API.redirect}`
+  console.log(path, axios)
+  // axios({
+    //   method: 'GET',
+    //   url: path,
+    // }).then(res => console.log(res))
+    
+    // localStorage.setItem('code', window.location.href)
+  // // window.open(path)  
+  // // localStorage.setItem('code', code)
 }

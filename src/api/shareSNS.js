@@ -1,7 +1,6 @@
 export const facebook = ({
   url,
 }) => {
-  console.log('facebook',url)
   const facebook = `https://www.facebook.com/sharer/sharer.php?u=${url}`
 
   window.open(facebook,'share-facebook','width=530, height=750');

@@ -8,7 +8,6 @@ Vue.config.productionTip = false
 
 dotenv.config()
 const apiKey = process.env.VUE_APP_SDK_KEY
-
 Vue.use( VueKakaoSdk, { apiKey } )
 
 new Vue({
