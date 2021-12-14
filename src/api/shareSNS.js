@@ -1,4 +1,3 @@
-// import VueKakaoSdk from 'vue-kakao-sdk'
 export const facebook = ({
   url,
 }) => {
@@ -22,40 +21,29 @@ export const kakao = ({
   nameKo,
 }) => {
   const desc = `${nameKo}를 마셔보세요`
-  // const APP_KEY = 'b27251593b8afe3e7359b8df0255aa97'
-  console.log(url, title, img, desc)
 
-  // console.log(VueKakaoSdk)
-  // try {
-  //   if (Kakao) {
-  //     Kakao.init(APP_KEY)
-  //   }
-  // } catch(e) {
-  //   console.log(e)
-  // }
-
-  // Kakao.Link.sendDefault({ 
-  //   objectType: 'feed', 
-  //   content: { 
-  //     title: title, 
-  //     description: desc, 
-  //     imageUrl: img, //공유할 제목 옆에 사진
-  //     link: { // 이동할 url
-  //       mobileWebUrl: url, 
-  //       webUrl: url,
-  //     }, 
-  //   }, 
-  //   buttons: [ 
-  //     { 
-  //       title: '웹으로 보기', // 버튼 타이틀
-  //       link: { 
-  //         mobileWebUrl: url, 
-  //         webUrl: url, 
-  //       }, 
-  //     }, 
-  //   ], 
-  // })
-  // Kakao.Link.cleanup()
+  window.Kakao.Link.sendDefault({ 
+    objectType: 'feed', 
+    content: { 
+      title: title, 
+      description: desc, 
+      imageUrl: img, //공유할 제목 옆에 사진
+      link: { // 이동할 url
+        mobileWebUrl: url, 
+        webUrl: url,
+      }, 
+    }, 
+    buttons: [ 
+      { 
+        title: '웹으로 보기', // 버튼 타이틀
+        link: { 
+          mobileWebUrl: url, 
+          webUrl: url, 
+        }, 
+      }, 
+    ], 
+  })
+  window.Kakao.Link.cleanup()
 }
 export const naver = ({
   url,
