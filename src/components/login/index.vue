@@ -14,6 +14,7 @@
         <div class="login-box">
           <div 
             class="kakao"
+            id="kakao-login-btn"
             @click="loginKakao"
           >
             <img src="@/assets/img/kakao.png" alt="카카오 로그인">
@@ -41,18 +42,22 @@ export default {
   },
   data() {
     return {
-
+      tokens: null
     }
   },
   methods: {
     loginKakao() {
-      
-    const redirect = 'http://localhost:8080/login'
-
-    window.Kakao.Auth.authorize({
-      redirectUri: redirect
-    });
-      KakaoLogin()
+      window.Kakao.Auth.login({
+        success: function(authObj) {
+          this.tokens = authObj
+          // this.tokens = JSON.stringify(authObj)
+          
+          KakaoLogin()
+        },
+        fail: function(err) {
+          alert(JSON.stringify(err))
+        },
+      })
     }
   }
 }

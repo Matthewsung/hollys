@@ -1,21 +1,32 @@
-import axios from 'axios';
+// import axios from 'axios';
 import dotenv from 'dotenv';
 dotenv.config()
 
-const KAKAO_API = {
-  key: process.env.VUE_APP_REST_KEY,
-  redirect: 'http://localhost:8080/login'
-};
+// let KAKAO_TOKENS = {
+//   access_token: '',
+//   expires_in: 0,
+//   refresh_token: '',
+//   refresh_token_expires_in: 0,
+//   scope: '',
+//   token_type: ''
+// }
 
 export const KakaoLogin = () => {
-  const path = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_API.key}&redirect_uri=${KAKAO_API.redirect}`
-  console.log(path, axios)
-  // axios({
-    //   method: 'GET',
-    //   url: path,
-    // }).then(res => console.log(res))
+  
+  window.Kakao.API.request({
+    url: '/v2/user/me',
+    success: function(res) {
+      localStorage.setItem('id', res.id)
+      localStorage.setItem('nickname', res.properties.nickname)
+      localStorage.setItem('img', res.properties.profile_image)
+      localStorage.setItem('email', res.kakao_account.email)
+    },
+    fail: function(error) {
+      alert(
+        'login success, but failed to request user information: ' +
+          JSON.stringify(error)
+      )
+    },
+  })
     
-    // localStorage.setItem('code', window.location.href)
-  // // window.open(path)  
-  // // localStorage.setItem('code', code)
 }

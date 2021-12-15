@@ -35,15 +35,36 @@
             </router-link>
           </div>
           <ul class="top-menu-right">
-            <li>
+            <li
+              v-if="!isUser"
+            >
               <router-link to="/login">
                 <img src="@/assets/img/util_login.gif" alt="멤버십 로그인">
               </router-link>
             </li>
-            <li>
+            <li
+              v-if="!isUser"
+            >
               <router-link to="/prepare">
                 <img src="@/assets/img/util_join.gif" alt="멤버십 가입">
               </router-link>
+            </li>
+            <li
+              v-else-if="isUser"
+            >
+              <div class="user-box">
+                <div class="user-img-box">
+                  <img :src="user.img" alt="">
+                </div>
+                <div class="user-name">
+                  {{user.nickname}}
+                </div>
+                <div class="more-box">
+                  <p>계정관리</p>
+                  <p>로그아웃</p>
+                </div>
+
+              </div>
             </li>
             <li>
               <router-link to="/prepare">
@@ -267,8 +288,13 @@ export default {
   },
   data() {
     return{
+      isUser: false,
       menuShow: false,
+      user: {},
     }
+  },
+  mounted() {
+    this.chkUser()
   },
   methods: {
     showMenu() {
@@ -288,7 +314,24 @@ export default {
           path: `/menu/${path}`,
         }
       )
+    },
+    chkUser() {
+      if(localStorage.getItem('id')) {
+        this.isUser = true
+        this.user = {
+          img: localStorage.getItem('img'),
+          nickname: localStorage.getItem('nickname'),
+          email: localStorage.getItem('email')
+        }
+      }
+      else{
+        this.isUser = false
+      }
+      console.log(localStorage.getItem('id'))
     }
+  },
+  watch: {
+
   }
 
 }
@@ -338,6 +381,7 @@ export default {
             height: 21px;
             margin-top: 12px;
             display: flex;
+            align-items: center;
   
             li {
               margin-left: 16px;
@@ -353,6 +397,45 @@ export default {
   
               img {
                 width: 100%;
+              }
+
+              .user-box {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                position: relative;
+
+                .user-img-box {
+                  width: 24px;
+                  height: 24px;
+                  border-radius: 50%;
+                  overflow: hidden;
+                }
+
+                .user-name {
+                  font-size: 13px;
+                  margin-top: 2px;
+                }
+                
+                .more-box {
+                  box-shadow: 0 0 3px 0 rgba(0,0,0, 0.4);
+                  text-align: center;
+                  position: absolute;
+                  left: 0;
+                  top: calc(100% + 8px);
+                  z-index: 9;
+
+                  p {
+                    width: 100px;
+                    padding: 4px 0;
+                    background: #fff;
+                    
+                    &:hover {
+                      background: $hollys-red;
+                      color: #fff;
+                    }
+                  }
+                }
               }
             }
           }
