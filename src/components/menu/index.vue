@@ -3,37 +3,37 @@
     <div class="container">
       <aside class="side-menu-wrap">
         <ul class="side-menu-box">
-          <router-link to="/menu/espresso">
+          <router-link to="/hollys/menu/espresso">
             <li class="side-menu">
               COFFEE
             </li>
           </router-link>
-          <router-link to="/menu/signature">
+          <router-link to="/hollys/menu/signature">
             <li class="side-menu">
               라떼·초콜릿·티
             </li>
           </router-link>
-          <router-link to="/prepare">
+          <router-link to="/hollys/prepare">
             <li class="side-menu">
               할리치노·빙수
             </li>
           </router-link>
-          <router-link to="/prepare">
+          <router-link to="/hollys/prepare">
             <li class="side-menu">
               스파클링
             </li>
           </router-link>
-          <router-link to="/prepare">
+          <router-link to="/hollys/prepare">
             <li class="side-menu">
               푸드
             </li>
           </router-link>
-          <router-link to="/prepare">
+          <router-link to="/hollys/prepare">
             <li class="side-menu">
               MD상품
             </li>
           </router-link>
-          <router-link to="/prepare">
+          <router-link to="/hollys/prepare">
             <li class="side-menu">
               MD식품
             </li>

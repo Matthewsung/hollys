@@ -6,7 +6,7 @@
           <img src="@/assets/img/menu_tit.gif" alt="가맹문의">
         </div>
         <div class="info-content">
-          <router-link to="/prepare">
+          <router-link to="/hollys/prepare">
             <img src="@/assets/img/menu_img01.gif" alt="가맹문의하기">
           </router-link>
         </div>
@@ -18,19 +18,19 @@
         </div>
         <div class="info-content">
           <div class="item">
-            <router-link to="/prepare">
+            <router-link to="/hollys/prepare">
               <img src="@/assets/img/mushroom_soupe.png" alt="트러플머쉬룸스프볼">
             </router-link>
             <p>트러플머쉬룸스프볼</p>
           </div>
           <div class="item">
-            <router-link to="/prepare">
+            <router-link to="/hollys/prepare">
               <img src="@/assets/img/potato_denish.png" alt="베이컨 포테이토 데니쉬">
             </router-link>
             <p>베이컨 포테이토 데니쉬</p>
           </div>
           <div class="item">
-            <router-link to="/prepare">
+            <router-link to="/hollys/prepare">
               <img src="@/assets/img/con_denish.png" alt="콘 치즈 데니쉬">
             </router-link>
             <p>콘 치즈 데니쉬</p>
@@ -42,7 +42,7 @@
           <img src="@/assets/img/store_tit.gif" alt="전국매장">
         </div>
         <div class="info-content">
-          <router-link to="/prepare">
+          <router-link to="/hollys/prepare">
             <img src="@/assets/img/store_main_pc.jpg" alt="전국매장 찾기">
           </router-link>
         </div>
@@ -66,7 +66,7 @@
             할리스 아카데미와 함께하는 즐거운 커피여행!
           </div>
           <p class="desc-more">
-            <router-link to="/prepare">
+            <router-link to="/hollys/prepare">
               <img src="@/assets/img/ico_arrow.gif" alt="바로가기">
               바로가기
             </router-link>
@@ -82,7 +82,7 @@
             할리스 F&B는 20년의 커피 노하우를 기반으로 한 할리스 B2B 솔루션을 소개합니다.
           </div>
           <p class="desc-more">
-            <router-link to="/prepare">
+            <router-link to="/hollys/prepare">
               <img src="@/assets/img/ico_arrow.gif" alt="바로가기">
               바로가기
             </router-link>
@@ -93,7 +93,7 @@
         <div class="content-title">
           <img src="@/assets/img/news_tit.gif" alt="뉴스">
           <span>
-            <router-link to="/prepare">
+            <router-link to="/hollys/prepare">
               <img src="@/assets/img/ico_arrow.gif" alt="바로가기">
             </router-link>
           </span>
@@ -104,7 +104,7 @@
               class="desc-item"
               v-for="(list, index) in newsTxt" :key="list.title + '_' + index"
             >
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <div class="desc-title">
                   {{list.title}}
                 </div>
@@ -119,7 +119,7 @@
       <div class="board-content content-item-box">
         <div class="content-item">
           <div class="item-img">
-            <router-link to="/prepare">
+            <router-link to="/hollys/prepare">
               <img src="@/assets/img/img_etc01.gif" alt="창업안내">
             </router-link>
           </div>
@@ -127,7 +127,7 @@
         </div>
         <div class="content-item">
           <div class="item-img">
-            <router-link to="/prepare">
+            <router-link to="/hollys/prepare">
               <img src="@/assets/img/img_etc02.gif" alt="아카데미 강좌">
             </router-link>
           </div>
@@ -135,7 +135,7 @@
         </div>
         <div class="content-item">
           <div class="item-img">
-            <router-link to="/prepare">
+            <router-link to="/hollys/prepare">
               <img src="@/assets/img/img_etc03.gif" alt="고객문의">
             </router-link>
           </div>

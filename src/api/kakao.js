@@ -7,7 +7,7 @@ export const KakaoLogin = () => {
       localStorage.setItem('nickname', res.properties.nickname)
       localStorage.setItem('img', res.properties.profile_image)
       localStorage.setItem('email', res.kakao_account.email)
-      window.location.href = 'http://localhost:8080'
+      window.location.href = 'https://matthewsung.github.io/hollys/'
     },
     fail: function(error) {
       alert(
@@ -21,7 +21,7 @@ export const KakaoLogin = () => {
 export const KakaoLogout = () => {
   window.Kakao.Auth.logout(function() {
     localStorage.clear()
-    window.location.href = 'http://localhost:8080'
+    window.location.href = 'https://matthewsung.github.io/hollys/'
   })
 
 }

@@ -5,7 +5,7 @@
         <div class="container">
           <ul class="company-wrap">
             <li>
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <img 
                   src="@/assets/img/gnb_smenu01.png" 
                   alt="창업설명회"
@@ -13,7 +13,7 @@
               </router-link>
             </li>
             <li class="accademy">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <img 
                   src="@/assets/img/gnb_smenu02_2.gif" 
                   alt="아카데미"
@@ -21,7 +21,7 @@
               </router-link>
             </li>
             <li class="accademy">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <img 
                   src="@/assets/img/gnb_smenu04.gif" 
                   alt="기업특판"
@@ -30,7 +30,7 @@
             </li>
           </ul>
           <div class="logo-wrap">
-            <router-link to="/">
+            <router-link to="/hollys/">
               <img src="@/assets/img/logo_210302.gif" alt="할리스로고">
             </router-link>
           </div>
@@ -38,14 +38,14 @@
             <li
               v-if="!isUser"
             >
-              <router-link to="/login">
+              <router-link to="/hollys/login">
                 <img src="@/assets/img/util_login.gif" alt="멤버십 로그인">
               </router-link>
             </li>
             <li
               v-if="!isUser"
             >
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <img src="@/assets/img/util_join.gif" alt="멤버십 가입">
               </router-link>
             </li>
@@ -68,7 +68,7 @@
                   v-if="showMoreBox"
                 >
                   <p>
-                    <router-link to="/prepare">
+                    <router-link to="/hollys/prepare">
                       계정관리
                     </router-link>
                   </p>
@@ -82,17 +82,17 @@
               </div>
             </li>
             <li>
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <img src="@/assets/img/util_09.gif" alt="고객센터">
               </router-link>
             </li>
             <li class="language">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <img src="@/assets/img/util_05.gif" alt="English">
               </router-link>
             </li>
             <li class="language">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <img src="@/assets/img/util_chinese.gif" alt="中文">
               </router-link>
             </li>
@@ -106,7 +106,7 @@
             @mouseenter="showMenu"
           >
             <li class="menu-item">
-              <router-link to="/menu/espresso">
+              <router-link to="/hollys/menu/espresso">
                 <h6>Menu</h6>
                 <p
                   :class="{'show': menuShow}"
@@ -114,7 +114,7 @@
               </router-link>
             </li>
             <li class="menu-item">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <h6>HOLLYS Mall</h6>
                 <p
                   :class="{'show':  menuShow}"
@@ -122,7 +122,7 @@
               </router-link>
             </li>
             <li class="menu-item">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <h6>Membership</h6>
                 <p
                   :class="{'show':  menuShow}"
@@ -130,7 +130,7 @@
               </router-link>
             </li>
             <li class="menu-item">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <h6>HOLLYS News</h6>
                 <p
                   :class="{'show':  menuShow}"
@@ -138,7 +138,7 @@
               </router-link>
             </li>
             <li class="menu-item">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <h6>Store</h6>
                 <p
                   :class="{'show':  menuShow}"
@@ -146,7 +146,7 @@
               </router-link>
             </li>
             <li class="menu-item">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 <h6>HOLLYS is</h6>
                 <p
                   :class="{'show':  menuShow}"
@@ -163,37 +163,37 @@
           <div class="container">
             <ul class="sub-menu-item-box">
               <li class="sub-menu-item">
-                <router-link to="/menu/espresso">
+                <router-link to="/hollys/menu/espresso">
                   <p>
                     COFFEE
                   </p>
                 </router-link>
-                <router-link to="/menu/signature">
+                <router-link to="/hollys/menu/signature">
                   <p>
                     라떼·초콜릿·티
                   </p>
                 </router-link>
-                <router-link to="/prepare">
+                <router-link to="/hollys/prepare">
                   <p>
                     할리치노·빙수
                   </p>
                 </router-link>
-                <router-link to="/prepare">
+                <router-link to="/hollys/prepare">
                   <p>
                     스파클링
                   </p>
                 </router-link>
-                <router-link to="/prepare">
+                <router-link to="/hollys/prepare">
                   <p>
                     푸드
                   </p>
                 </router-link>
-                <router-link to="/prepare">
+                <router-link to="/hollys/prepare">
                   <p>
                     MD상품
                   </p>
                 </router-link>
-                <router-link to="/prepare">
+                <router-link to="/hollys/prepare">
                   <p>
                     MD식품
                   </p>
@@ -235,42 +235,42 @@
         <div class="footer-top">
           <ul class="content-box">
             <li class="content">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 개인정보처리방침
               </router-link>
             </li>
             <li class="content">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 서비스이용약관
               </router-link>
             </li>
             <li class="content">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 멤버십이용약관
               </router-link>
             </li>
             <li class="content">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 할리스카드이용약관
               </router-link>
             </li>
             <li class="content">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 고객문의
               </router-link>
             </li>
             <li class="content">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 고객설문
               </router-link>
             </li>
             <li class="content">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 사이트맵
               </router-link>
             </li>
             <li class="content">
-              <router-link to="/prepare">
+              <router-link to="/hollys/prepare">
                 BI 소개
               </router-link>
             </li>
@@ -330,7 +330,7 @@ export default {
     movePage(path) {
       this.$router.push(
         {
-          path: `/menu/${path}`,
+          path: `/hollys/menu/${path}`,
         }
       )
     },

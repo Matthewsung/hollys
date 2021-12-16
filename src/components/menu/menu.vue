@@ -254,7 +254,7 @@ export default {
       const beverage = this.$route.params.beverage;
       this.$router.push(
         {
-          path: `/menu/${beverage}?type=${index}`
+          path: `/hollys/menu/${beverage}?type=${index}`
         }
       )
     },
@@ -262,7 +262,7 @@ export default {
       if(this.$route.query === ''){
         this.$router.push(
           {
-            path: `/menu/${beverage}?type=0`
+            path: `/hollys/menu/${beverage}?type=0`
           }
         ) 
       }

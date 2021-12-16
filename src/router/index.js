@@ -5,22 +5,22 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: '/hollys',
     name: 'Main',
     component: () => import('@/components/main')
   },
   {
-    path: '/prepare',
+    path: '/hollys/prepare',
     name: 'Prepare',
     component: () => import('@/components/prepare.vue')
   },
   {
-    path: '/login',
+    path: '/hollys/login',
     name: 'Login',
     component: () => import('@/components/login')
   },
   {
-    path: '/menu/:beverage',
+    path: '/hollys/menu/:beverage',
     name: 'Menu',
     component: () => import('@/components/menu'),
     props: true,
