@@ -8,5 +8,5 @@ module.exports = {
       }
     }
   },
-  publicPath: '/hollyss'
+  publicPath: '/hollys'
 }
