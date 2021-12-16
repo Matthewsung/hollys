@@ -8,5 +8,7 @@ module.exports = {
       }
     }
   },
-  publicPath: '/hollys'
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/hollys/'
+    : '/'
 }
