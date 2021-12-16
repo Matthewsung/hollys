@@ -33,7 +33,9 @@
 </template>
 
 <script>
-import { KakaoLogin } from '@/api/kakao.js';
+import { 
+  KakaoLogin 
+} from '@/api/kakao.js';
 
 export default {
   name: 'loginComponent',
@@ -50,8 +52,6 @@ export default {
       window.Kakao.Auth.login({
         success: function(authObj) {
           this.tokens = authObj
-          // this.tokens = JSON.stringify(authObj)
-          
           KakaoLogin()
         },
         fail: function(err) {

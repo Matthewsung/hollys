@@ -52,16 +52,31 @@
             <li
               v-else-if="isUser"
             >
-              <div class="user-box">
+              <div 
+                class="user-box"
+                @mouseenter="showMore"
+              >
                 <div class="user-img-box">
                   <img :src="user.img" alt="">
                 </div>
                 <div class="user-name">
                   {{user.nickname}}
                 </div>
-                <div class="more-box">
-                  <p>계정관리</p>
-                  <p>로그아웃</p>
+                <div 
+                  class="more-box"
+                  @mouseleave="hiddenMore"
+                  v-if="showMoreBox"
+                >
+                  <p>
+                    <router-link to="/prepare">
+                      계정관리
+                    </router-link>
+                  </p>
+                  <p
+                    @click="logOut"
+                  >
+                    로그아웃
+                  </p>
                 </div>
 
               </div>
@@ -279,6 +294,9 @@
 </template>
 
 <script>
+import {
+  KakaoLogout,
+  } from '../api/kakao.js'
 
 export default {
   name: 'MainComponent',
@@ -291,6 +309,7 @@ export default {
       isUser: false,
       menuShow: false,
       user: {},
+      showMoreBox: false,
     }
   },
   mounted() {
@@ -323,11 +342,20 @@ export default {
           nickname: localStorage.getItem('nickname'),
           email: localStorage.getItem('email')
         }
+        console.log(111)
       }
       else{
         this.isUser = false
       }
-      console.log(localStorage.getItem('id'))
+    },
+    logOut() {
+      KakaoLogout()
+    },
+    showMore() {
+      this.showMoreBox = true
+    },
+    hiddenMore() {
+      this.showMoreBox = false
     }
   },
   watch: {

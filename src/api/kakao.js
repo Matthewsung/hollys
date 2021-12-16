@@ -1,16 +1,3 @@
-// import axios from 'axios';
-import dotenv from 'dotenv';
-dotenv.config()
-
-// let KAKAO_TOKENS = {
-//   access_token: '',
-//   expires_in: 0,
-//   refresh_token: '',
-//   refresh_token_expires_in: 0,
-//   scope: '',
-//   token_type: ''
-// }
-
 export const KakaoLogin = () => {
   
   window.Kakao.API.request({
@@ -20,6 +7,7 @@ export const KakaoLogin = () => {
       localStorage.setItem('nickname', res.properties.nickname)
       localStorage.setItem('img', res.properties.profile_image)
       localStorage.setItem('email', res.kakao_account.email)
+      window.location.href = 'http://localhost:8080'
     },
     fail: function(error) {
       alert(
@@ -27,6 +15,13 @@ export const KakaoLogin = () => {
           JSON.stringify(error)
       )
     },
+  })   
+}
+
+export const KakaoLogout = () => {
+  window.Kakao.Auth.logout(function() {
+    localStorage.clear()
+    window.location.href = 'http://localhost:8080'
   })
-    
+
 }
